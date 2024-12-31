@@ -100,8 +100,10 @@ function Library:Toggle(value)
     if ab == not nil then
         if ab.Parent.Enabled == false then
             ab.Parent.Enabled = true
+            print("1")
         else
             ab.Parent.Enabled = false
+            print("2")
         end
     end
 end
