@@ -5,6 +5,8 @@ local NeverloseVersion = "v1.1A."
 local TweenService = game:GetService("TweenService")
 local input = game:GetService("UserInputService")
 
+local ab = nil
+
 for i,v in next, game.CoreGui:GetChildren() do
     if v:IsA("ScreenGui") and v.Name == "Neverlose" then
         v:Destroy() 
@@ -95,9 +97,13 @@ local function clickEffect(options)
 end
 
 function Library:Toggle(value)
-    if game:GetService("CoreGui"):FindFirstChild("Neverlose") == nil then return end
-    enabled = (type(value) == "boolean" and value) or game:GetService("CoreGui"):FindFirstChild("Neverlose").Enabled
-    game:GetService("CoreGui"):FindFirstChild("Neverlose").Enabled = not enabled
+    if ab == not nil then
+        if ab.Parent.Enabled == false then
+            ab.Parent.Enabled = true
+        else
+            ab.Parent.Enabled = false
+        end
+    end
 end
 
 function Library:Window(options)
@@ -105,6 +111,7 @@ function Library:Window(options)
 
     local SG = Instance.new("ScreenGui")
     local Body = Instance.new("Frame")
+    ab = body
     Dragify(Body, Body)
     local bodyCorner = Instance.new("UICorner")
 
